@@ -5,36 +5,105 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Groups Freezer | Smart Tab Management</title>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --bg-color: #0b0f19;
-            --surface: rgba(17, 24, 39, 0.6);
-            --border-light: rgba(255, 255, 255, 0.08);
-            --border-hover: rgba(255, 255, 255, 0.15);
-            --accent-blue: #3b82f6;
-            --accent-purple: #8b5cf6;
-            --accent-kofi: #ff5e5b;
-            --text-main: #f3f4f6;
-            --text-subtitle: #e2e8f0; /* Более светлый и читаемый цвет подзаголовка */
-            --text-muted: #9ca3af;
-        }
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; }
+    <div class="container">
+        
+        <nav class="navbar">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="32" height="32">
+              <rect x="26" y="16" width="76" height="24" rx="4" fill="#d93025"/>
+              <rect x="22" y="42" width="84" height="24" rx="4" fill="#e37400"/>
+              <rect x="18" y="68" width="92" height="24" rx="4" fill="#1e8e3e"/>
+              <rect x="14" y="94" width="100" height="24" rx="4" fill="#1a73e8"/>
+              <text x="64" y="70" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="68" font-weight="bold" fill="white" text-anchor="middle" dominant-baseline="central">G</text>
+            </svg>
+            <span class="logo-text">GROUPS FREEZER</span>
+        </nav>
 
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            overflow-x: hidden;
-            line-height: 1.6;
-            background-image: 
-                radial-gradient(circle at 15% 50%, rgba(59, 130, 246, 0.08) 0%, transparent 50%),
-                radial-gradient(circle at 85% 30%, rgba(139, 92, 246, 0.08) 0%, transparent 50%);
-        }
+        <header class="hero">
+            <h1>Freeze the clutter.<br>Unleash your browser.</h1>
+            <p>Save your computer's memory, organize your workspace into visual dashboards, and never lose your train of thought again.</p>
+            
+            <a href="https://chrome.google.com/webstore/detail/YOUR_EXTENSION_ID" target="_blank" class="btn-primary">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <circle cx="12" cy="12" r="4"></circle>
+                    <line x1="21.17" y1="8" x2="12" y2="8"></line>
+                    <line x1="3.95" y1="6.06" x2="8.54" y2="14"></line>
+                    <line x1="10.88" y1="21.94" x2="15.46" y2="14"></line>
+                </svg>
+                Add to Chrome — It's Free
+            </a>
+        </header>
 
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 40px 24px 80px 24px;
+        <section class="video-section">
+            <div class="browser-mockup">
+                <div class="browser-header">
+                    <span class="dot close"></span>
+                    <span class="dot minimize"></span>
+                    <span class="dot expand"></span>
+                </div>
+                <div class="video-wrapper">
+                    <iframe 
+                        src="https://www.youtube.com/embed/tEs4Uw_go3U?rel=0" 
+                        title="Groups Freezer - Smart Tab Management" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                        referrerpolicy="strict-origin-when-cross-origin" 
+                        allowfullscreen>
+                    </iframe>
+                </div>
+            </div>
+        </section>
+
+        <section class="grid">
+            
+            <div class="glass-panel">
+                <div class="panel-header">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+                    <h2>Submit Feedback</h2>
+                </div>
+                <p class="subtitle">Found a bug or have a feature request? Let me know directly.</p>
+                
+                <form action="https://formspree.io/f/xdawebbd" method="POST">
+                    <div class="input-group">
+                        <input type="email" name="email" placeholder="Your Email Address" required>
+                    </div>
+                    <div class="input-group">
+                        <textarea name="message" rows="4" placeholder="Describe the issue or share your idea..." required></textarea>
+                    </div>
+                    <button type="submit" class="btn-ghost">Send Message</button>
+                </form>
+            </div>
+
+            <div class="glass-panel support-panel">
+                <div class="panel-header">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path></svg>
+                    <h2>Support the App</h2>
+                </div>
+                <p class="subtitle">Groups Freezer is built by a solo developer. If this extension saves you RAM and time, consider supporting future updates.</p>
+                
+                <a href="https://ko-fi.com/K3K21VOTE9" target="_blank" class="btn-kofi">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M23.881 8.948c-.773-4.085-4.859-4.593-4.859-4.593H.723c-.604 0-.679.798-.679.798s-.082 7.324-.022 11.822c.164 2.424 2.586 2.672 2.586 2.672s8.267-.023 11.966-.049c2.438-.426 2.683-2.566 2.658-3.734 4.352.24 7.422-2.831 6.649-6.916zm-11.062 3.511c-1.246 1.453-4.011 3.976-4.011 3.976s-.121.119-.31.023c-.076-.057-.108-.09-.108-.09-.443-.441-3.368-3.049-4.051-3.954-1.094-1.465-1.083-3.975.061-4.878.536-.425 1.097-.205 1.828-.052.365.076.762.391 1.005.814.16.28.495.278.657-.003.245-.426.646-.741 1.012-.815.728-.15 1.287-.373 1.823.051 1.152.91.109 3.514-.906 4.928zm7.29 -.196c-.663 1.574-2.529 1.623-2.529 1.623l-.025-4.631c.621 0 2.417-.201 2.87 1.135z"/></svg>
+                    Support on Ko-fi
+                </a>
+            </div>
+
+        </section>
+
+        <footer>
+            <div class="copyright">© 2026 Groups Freezer. Built for productivity.</div>
+            <div class="footer-links">
+                <a href="privacy.html">Privacy Policy</a>
+                <a href="mailto:rollercoasterxxl@gmail.com">Contact Developer</a>
+            </div>
+        </footer>
+
+    </div>
+</body>
+</html>            padding: 40px 24px 80px 24px;
             display: flex;
             flex-direction: column;
             gap: 70px;
