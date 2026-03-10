@@ -3,142 +3,125 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Privacy Policy - Groups Freezer</title>
+    <title>Privacy Policy | Groups Freezer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    
     <style>
-        :root {
-            --primary-color: #3b81f6;
-            --text-color: #334155;
-            --heading-color: #0f172a;
-            --bg-color: #f8fafc;
-            --container-bg: #ffffff;
+        .policy-content {
+            padding: 48px 64px;
         }
-        
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
-            line-height: 1.6;
-            color: var(--text-color);
-            background-color: var(--bg-color);
-            margin: 0;
-            padding: 40px 20px;
+        .policy-content h1 {
+            font-size: 2.5rem;
+            margin-bottom: 8px;
+            background: linear-gradient(180deg, #ffffff 0%, #93c5fd 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -0.02em;
         }
-        
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            background: var(--container-bg);
-            padding: 50px 70px;
-            border-radius: 16px;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-        }
-        
-        h1 {
-            color: var(--heading-color);
-            font-size: 2.2rem;
-            margin-top: 0;
-            margin-bottom: 0.5rem;
-            letter-spacing: -0.025em;
-        }
-        
-        .effective-date {
-            color: #64748b;
-            font-size: 0.95rem;
-            margin-bottom: 2.5rem;
-            font-style: italic;
-        }
-        
-        h2 {
-            color: var(--heading-color);
+        .policy-content h2 {
+            margin-top: 40px;
+            margin-bottom: 16px;
+            color: var(--text-main);
+            border-bottom: 1px solid var(--border-light);
+            padding-bottom: 12px;
             font-size: 1.4rem;
-            margin-top: 2.5rem;
-            margin-bottom: 1rem;
-            border-bottom: 2px solid #e2e8f0;
-            padding-bottom: 0.5rem;
         }
-        
-        p {
-            margin-bottom: 1.2rem;
+        .policy-content p, .policy-content li {
+            color: var(--text-subtitle);
+            margin-bottom: 16px;
+            font-size: 1.05rem;
         }
-        
-        ul {
-            margin-bottom: 1.5rem;
-            padding-left: 1.5rem;
+        .policy-content ul {
+            padding-left: 24px;
+            margin-bottom: 24px;
         }
-        
-        li {
-            margin-bottom: 0.75rem;
-        }
-        
-        strong {
-            color: var(--heading-color);
+        .policy-content strong {
+            color: #e2e8f0;
             font-weight: 600;
         }
-        
-        code {
-            background-color: #f1f5f9;
-            padding: 0.2rem 0.4rem;
+        .policy-content code {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 2px 6px;
             border-radius: 6px;
-            font-size: 0.9em;
-            color: var(--primary-color);
-            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+            color: var(--accent-blue);
+            font-family: monospace;
+            border: 1px solid var(--border-light);
         }
         
-        a {
-            color: var(--primary-color);
-            text-decoration: none;
-            font-weight: 500;
-        }
-        
-        a:hover {
-            text-decoration: underline;
-        }
-        
-        /* Адаптивность для мобильных устройств */
-        @media (max-width: 600px) {
-            .container {
-                padding: 30px 20px;
-            }
-            h1 {
-                font-size: 1.8rem;
-            }
+        @media (max-width: 768px) {
+            .policy-content { padding: 32px 24px; }
+            .policy-content h1 { font-size: 2rem; }
         }
     </style>
 </head>
 <body>
+
     <div class="container">
-        <h1>Privacy Policy for Groups Freezer</h1>
-        <div class="effective-date">Effective Date: March 9, 2026</div>
+        
+        <nav class="navbar" style="justify-content: space-between;">
+            <a href="index.html" style="display: flex; align-items: center; gap: 12px; text-decoration: none;">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="32" height="32">
+                  <rect x="26" y="16" width="76" height="24" rx="4" fill="#d93025"/>
+                  <rect x="22" y="42" width="84" height="24" rx="4" fill="#e37400"/>
+                  <rect x="18" y="68" width="92" height="24" rx="4" fill="#1e8e3e"/>
+                  <rect x="14" y="94" width="100" height="24" rx="4" fill="#1a73e8"/>
+                  <text x="64" y="70" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="68" font-weight="bold" fill="white" text-anchor="middle" dominant-baseline="central">G</text>
+                </svg>
+                <span class="logo-text">GROUPS FREEZER</span>
+            </a>
+            
+            <a href="index.html" class="btn-ghost" style="width: auto; padding: 10px 20px; font-size: 0.9rem;">
+                ← Back to Home
+            </a>
+        </nav>
 
-        <p>This Privacy Policy applies to the <strong>"Groups Freezer"</strong> Chrome Extension (hereinafter referred to as "the Extension"). By using the Extension, you agree to the terms outlined in this policy.</p>
+        <div class="glass-panel policy-content">
+            <h1>Privacy Policy</h1>
+            <p style="font-style: italic; margin-bottom: 40px; color: var(--text-muted); font-size: 0.95rem;">Effective Date: March 9, 2026</p>
 
-        <h2>1. Data Collection and Storage</h2>
-        <p>Groups Freezer is designed with "Privacy by Design" principles. The Extension operates entirely locally on your device.</p>
-        <ul>
-            <li><strong>We do not collect, transmit, share, or sell any of your personal data.</strong> All data generated by the Extension, including your saved tabs, URLs, custom notes, tasks, and project history, is saved exclusively in your browser's local storage (<code>chrome.storage.local</code>).</li>
-            <li>No data is ever sent to our servers or any third-party databases. <strong>Everything you save is stored locally on your device, ensuring maximum security.</strong></li>
-        </ul>
+            <p>This Privacy Policy applies to the <strong>"Groups Freezer"</strong> Chrome Extension (hereinafter referred to as "the Extension"). By using the Extension, you agree to the terms outlined in this policy.</p>
 
-        <h2>2. How We Use Your Data</h2>
-        <p>The permissions requested by the Extension are used strictly for its core functionality:</p>
-        <ul>
-            <li><strong><code>&lt;all_urls&gt;</code> and <code>scripting</code>:</strong> Used solely at the moment you "freeze" a group to extract basic page metadata (such as titles, descriptions, and preview images) to create visual cards for your local dashboard. We do not track your browsing history or inject ads/trackers into the pages you visit.</li>
-            <li><strong><code>tabs</code> and <code>tabGroups</code>:</strong> Used to manage, close, and restore your tab groups as requested by you.</li>
-        </ul>
+            <h2>1. Data Collection and Storage</h2>
+            <p>Groups Freezer is designed with "Privacy by Design" principles. The Extension operates entirely locally on your device.</p>
+            <ul>
+                <li><strong>We do not collect, transmit, share, or sell any of your personal data.</strong> All data generated by the Extension, including your saved tabs, URLs, custom notes, tasks, and project history, is saved exclusively in your browser's local storage (<code>chrome.storage.local</code>).</li>
+                <li>No data is ever sent to our servers or any third-party databases. <strong>Everything you save is stored locally on your device, ensuring maximum security.</strong></li>
+            </ul>
 
-        <h2>3. Third-Party Services</h2>
-        <p>The Extension does not use third-party analytics (like Google Analytics) or tracking tools. The only external request made by the Extension is to Google's public Favicon API (<code>https://www.google.com/s2/favicons</code>) to display website icons next to your saved links in the dashboard.</p>
+            <h2>2. How We Use Your Data</h2>
+            <p>The permissions requested by the Extension are used strictly for its core functionality:</p>
+            <ul>
+                <li><strong><code>&lt;all_urls&gt;</code> and <code>scripting</code>:</strong> Used solely at the moment you "freeze" a group to extract basic page metadata (such as titles, descriptions, and preview images) to create visual cards for your local dashboard. We do not track your browsing history or inject ads/trackers into the pages you visit.</li>
+                <li><strong><code>tabs</code> and <code>tabGroups</code>:</strong> Used to manage, close, and restore your tab groups as requested by you.</li>
+            </ul>
 
-        <h2>4. Data Retention and Deletion</h2>
-        <p>Because all data is stored locally on your device, you have complete control over it. You can permanently delete all your data at any time by:</p>
-        <ul>
-            <li>Deleting groups or clearing the archive directly within the Extension's interface.</li>
-            <li>Uninstalling the Extension from your browser, which will automatically wipe its local storage.</li>
-        </ul>
+            <h2>3. Third-Party Services</h2>
+            <p>The Extension does not use third-party analytics (like Google Analytics) or tracking tools. The only external request made by the Extension is to Google's public Favicon API (<code>https://www.google.com/s2/favicons</code>) to display website icons next to your saved links in the dashboard.</p>
 
-        <h2>5. Changes to This Policy</h2>
-        <p>We may update this Privacy Policy from time to time to reflect changes in our practices or for other operational, legal, or regulatory reasons.</p>
+            <h2>4. Data Retention and Deletion</h2>
+            <p>Because all data is stored locally on your device, you have complete control over it. You can permanently delete all your data at any time by:</p>
+            <ul>
+                <li>Deleting groups or clearing the archive directly within the Extension's interface.</li>
+                <li>Uninstalling the Extension from your browser, which will automatically wipe its local storage.</li>
+            </ul>
 
-        <h2>6. Contact Us</h2>
-        <p>If you have any questions or concerns about this Privacy Policy or your data, please contact the developer via the support link provided in the Chrome Web Store.</p>
+            <h2>5. Changes to This Policy</h2>
+            <p>We may update this Privacy Policy from time to time to reflect changes in our practices or for other operational, legal, or regulatory reasons.</p>
+
+            <h2>6. Contact Us & Feedback Forms</h2>
+            <p>If you choose to contact us for support or report a bug via our website's feedback form, we will only use the provided information (such as your email address) to communicate with you regarding your issue. We do not sell, share, or use this information for marketing purposes.</p>
+            <p>For other inquiries, please contact the developer at <strong><a href="mailto:rollercoasterxxl@gmail.com" style="color: var(--accent-blue);">rollercoasterxxl@gmail.com</a></strong>.</p>
+        </div>
+
+        <footer>
+            <div class="copyright">© 2026 Groups Freezer. Built for productivity.</div>
+            <div class="footer-links">
+                <a href="index.html">Home</a>
+                <a href="mailto:rollercoasterxxl@gmail.com">Contact Developer</a>
+            </div>
+        </footer>
+
     </div>
 </body>
-</html> 
+</html>
