@@ -13,14 +13,16 @@
     <div class="container">
         
         <nav class="navbar">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="28" height="28">
-              <rect x="26" y="16" width="76" height="24" rx="4" fill="#d93025"/>
-              <rect x="22" y="42" width="84" height="24" rx="4" fill="#e37400"/>
-              <rect x="18" y="68" width="92" height="24" rx="4" fill="#1e8e3e"/>
-              <rect x="14" y="94" width="100" height="24" rx="4" fill="#1a73e8"/>
-              <text x="64" y="70" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="68" font-weight="bold" fill="white" text-anchor="middle" dominant-baseline="central">G</text>
-            </svg>
-            <span class="logo-text">GROUPS FREEZER</span>
+            <div class="navbar-left">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="32" height="32">
+                  <rect x="26" y="16" width="76" height="24" rx="4" fill="#d93025"/>
+                  <rect x="22" y="42" width="84" height="24" rx="4" fill="#e37400"/>
+                  <rect x="18" y="68" width="92" height="24" rx="4" fill="#1e8e3e"/>
+                  <rect x="14" y="94" width="100" height="24" rx="4" fill="#1a73e8"/>
+                  <text x="64" y="70" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="68" font-weight="bold" fill="white" text-anchor="middle" dominant-baseline="central">G</text>
+                </svg>
+                <span class="logo-text">GROUPS FREEZER</span>
+            </div>
         </nav>
 
         <header class="hero">
@@ -59,7 +61,7 @@
             </div>
         </section>
 
-        <section class="grid">
+        <section class="grid" id="feedback">
             
             <div class="glass-panel">
                 <div class="panel-header">
@@ -77,12 +79,11 @@
                             <option value="" disabled selected>Select Category...</option>
                             <option value="bug">Report a Bug</option>
                             <option value="feature">Feature Request</option>
-                            <option value="other">General Inquiry</option>
+                            <option value="other">Other</option>
                         </select>
                     </div>
                     <div class="input-group">
-                        <textarea id="feedback-msg" name="message" rows="5" maxlength="500" placeholder="Describe the issue or share your idea..." required></textarea>
-                        <div class="char-counter" id="char-count">0/500</div>
+                        <textarea name="message" rows="4" placeholder="Describe the issue or share your idea..." required></textarea>
                     </div>
                     <button type="submit" class="btn-secondary">Send Message</button>
                 </form>
@@ -90,43 +91,43 @@
 
             <div class="glass-panel support-panel">
                 <div class="panel-header">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path></svg>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
                     <h2>Support Development</h2>
                 </div>
                 
                 <div class="dev-profile">
-                    <img src="n_bv.jpg" alt="Solo Developer" class="dev-avatar">
+                    <img src="https://ui-avatars.com/api/?name=V&background=3b82f6&color=fff" alt="Developer" class="dev-avatar">
                     <div class="dev-info">
                         <span class="dev-greeting">Hi, I'm the solo developer.</span>
                         <span class="dev-context">If this extension improves your workflow, consider supporting its future updates.</span>
                     </div>
                 </div>
-                
+
                 <div class="support-tiers">
-                    <a href="https://ko-fi.com/s/9cb919a399" target="_blank" class="tier-card">
+                    <a href="ССЫЛКА_ИЗ_МАГАЗИНА_НА_5_ДОЛЛАРОВ" target="_blank" class="tier-card">
                         <div class="tier-left">
                             <div class="tier-icon-wrap">
-                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"></path><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path><line x1="6" y1="1" x2="6" y2="4"></line><line x1="10" y1="1" x2="10" y2="4"></line><line x1="14" y1="1" x2="14" y2="4"></line></svg>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"></path><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path><line x1="6" y1="1" x2="6" y2="4"></line><line x1="10" y1="1" x2="10" y2="4"></line><line x1="14" y1="1" x2="14" y2="4"></line></svg>
                             </div>
                             <span class="tier-name">Supporter</span>
                         </div>
                         <span class="tier-price">$5</span>
                     </a>
-                    
-                    <a href="https://ko-fi.com/s/96f495e986" target="_blank" class="tier-card">
+
+                    <a href="ССЫЛКА_ИЗ_МАГАЗИНА_НА_25_ДОЛЛАРОВ" target="_blank" class="tier-card tier-card-highlight">
                         <div class="tier-left">
                             <div class="tier-icon-wrap">
-                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
                             </div>
                             <span class="tier-name">Feature Fund</span>
                         </div>
                         <span class="tier-price">$25</span>
                     </a>
-                    
-                    <a href="https://ko-fi.com/s/58db58f8ba" target="_blank" class="tier-card tier-card-highlight">
+
+                    <a href="ССЫЛКА_ИЗ_МАГАЗИНА_НА_100_ДОЛЛАРОВ" target="_blank" class="tier-card">
                         <div class="tier-left">
                             <div class="tier-icon-wrap">
-                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
                             </div>
                             <span class="tier-name">Full Sponsor</span>
                         </div>
@@ -140,19 +141,12 @@
         <footer>
             <div class="footer-links">
                 <a href="privacy.html">Privacy Policy</a>
+                <a href="#feedback">Contact Support</a>
             </div>
             <div class="copyright">© 2026 Groups Freezer. Built for productivity.</div>
         </footer>
 
     </div>
-
-    <script>
-        const textarea = document.getElementById('feedback-msg');
-        const counter = document.getElementById('char-count');
-        
-        textarea.addEventListener('input', function() {
-            counter.textContent = `${this.value.length}/500`;
-        });
-    </script>
+    
 </body>
 </html>
