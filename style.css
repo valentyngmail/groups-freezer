@@ -1,12 +1,15 @@
 :root {
+    /* Вернули глубокий темно-синий цвет из оригинала */
     --bg-color: #080b12;
     --surface: #111520;
-    --border-light: rgba(255, 255, 255, 0.06);
-    --border-hover: rgba(255, 255, 255, 0.15);
+    --surface-hover: #1a2235;
+    --border-light: rgba(255, 255, 255, 0.08);
+    --border-strong: rgba(255, 255, 255, 0.15);
     --text-main: #ffffff;
     --text-subtitle: #a1a1aa;
     --text-muted: #71717a;
     --accent-blue: #3b82f6;
+    --accent-blue-hover: #2563eb;
     --accent-kofi: #ff5e5b;
 }
 
@@ -14,21 +17,28 @@
     margin: 0; 
     padding: 0; 
     box-sizing: border-box; 
-    font-family: 'Plus Jakarta Sans', sans-serif; 
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif; 
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 body {
     background-color: var(--bg-color);
     color: var(--text-main);
     line-height: 1.6;
+    /* Вернули цветные свечения на фон + оставили тонкую премиальную сетку */
     background-image: 
-        radial-gradient(circle at 50% 0%, rgba(59, 130, 246, 0.05) 0%, transparent 50%),
-        radial-gradient(circle at 80% 80%, rgba(139, 92, 246, 0.03) 0%, transparent 40%);
+        radial-gradient(circle at 50% 0%, rgba(59, 130, 246, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(139, 92, 246, 0.05) 0%, transparent 40%),
+        linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+    background-size: 100% 100%, 100% 100%, 64px 64px, 64px 64px;
     background-attachment: fixed;
+    background-position: center top;
 }
 
 .container {
-    max-width: 960px; /* Уменьшили ширину для большей сбитости контента */
+    max-width: 960px; 
     margin: 0 auto;
     padding: 48px 24px 80px;
     display: flex;
@@ -36,7 +46,7 @@ body {
     gap: 80px;
 }
 
-/* Навигация */
+/* Navbar */
 .navbar {
     display: flex;
     align-items: center;
@@ -49,7 +59,7 @@ body {
     color: var(--text-main);
 }
 
-/* Герой */
+/* Hero Section */
 .hero { 
     text-align: center; 
     padding-top: 20px;
@@ -60,6 +70,7 @@ body {
     line-height: 1.1;
     margin-bottom: 24px;
     letter-spacing: -0.04em;
+    /* Вернули синеватый отлив градиенту текста */
     background: linear-gradient(180deg, #ffffff 0%, #93c5fd 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -72,7 +83,7 @@ body {
     font-weight: 400;
 }
 
-/* Главная кнопка CTA */
+/* Primary Button */
 .btn-primary {
     background: #ffffff;
     color: #000000;
@@ -94,7 +105,7 @@ body {
     background: #f8fafc;
 }
 
-/* Видео в "Браузере" */
+/* Browser Mockup */
 .video-section {
     width: 100%;
 }
@@ -103,11 +114,11 @@ body {
     border: 1px solid var(--border-light);
     border-radius: 12px;
     overflow: hidden;
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(255,255,255,0.05);
 }
 .browser-header {
     background: rgba(255, 255, 255, 0.03);
-    padding: 12px 16px;
+    padding: 14px 16px;
     display: flex;
     gap: 8px;
     border-bottom: 1px solid var(--border-light);
@@ -123,7 +134,7 @@ body {
 
 .video-wrapper {
     position: relative;
-    padding-bottom: 56.25%; /* 16:9 */
+    padding-bottom: 56.25%; 
     height: 0;
     background: #000;
 }
@@ -133,31 +144,32 @@ body {
     width: 100%; height: 100%;
 }
 
-/* Грид: Фидбек и Донат */
+/* Grid Layout */
 .grid {
     display: grid;
     grid-template-columns: 1.2fr 1fr;
     gap: 24px;
 }
 
-/* Панели (Glassmorphism "Dry") */
+/* Glass Panels / Cards */
 .glass-panel {
     background: var(--surface);
     border: 1px solid var(--border-light);
     border-radius: 16px;
     padding: 40px;
-    transition: border-color 0.2s ease;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.4), 0 0 20px -5px rgba(59, 130, 246, 0.05);
 }
 .glass-panel:hover {
-    border-color: var(--border-hover);
+    border-color: var(--border-strong);
+    box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.5), 0 0 30px -5px rgba(59, 130, 246, 0.1);
 }
-
 .support-panel {
     display: flex;
     flex-direction: column;
 }
 
-/* Типографика панелей */
+/* Panel Typography */
 .panel-header {
     display: flex;
     align-items: center;
@@ -166,7 +178,7 @@ body {
     color: var(--text-main);
 }
 h2 {
-    font-size: 1.25rem;
+    font-size: 1.2rem;
     font-weight: 600;
     letter-spacing: -0.01em;
 }
@@ -174,90 +186,222 @@ h2 {
     color: var(--text-subtitle);
     font-size: 0.95rem;
     margin-bottom: 32px;
-    line-height: 1.5;
-    flex-grow: 1;
+    line-height: 1.6;
 }
 
-/* Формы ввода */
+/* Forms */
 .input-group {
     margin-bottom: 16px;
+    position: relative;
 }
-input, textarea {
+input, textarea, select {
     width: 100%;
     padding: 14px 16px;
     background: rgba(255, 255, 255, 0.03);
     border: 1px solid var(--border-light);
-    border-radius: 10px;
+    border-radius: 8px;
     color: var(--text-main);
     font-size: 0.95rem;
     outline: none;
     transition: all 0.2s ease;
+    appearance: none;
+    -webkit-appearance: none;
+}
+select {
+    background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2224%22%20height%3D%2224%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%23a1a1aa%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpolyline%20points%3D%226%209%2012%2015%2018%209%22%3E%3C%2Fpolyline%3E%3C%2Fsvg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px top 50%;
+    background-size: 16px auto;
+    cursor: pointer;
+}
+select option {
+    background-color: var(--surface);
+    color: var(--text-main);
 }
 input::placeholder, textarea::placeholder {
     color: var(--text-muted);
 }
-input:focus, textarea:focus {
+input:focus, textarea:focus, select:focus {
     border-color: var(--accent-blue);
     background: rgba(255, 255, 255, 0.05);
-    box-shadow: 0 0 0 1px var(--accent-blue);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
 }
 
-/* Второстепенные кнопки */
-.btn-ghost, .btn-kofi {
+.char-counter {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    text-align: right;
+    margin-top: 8px;
+}
+
+/* Secondary Button (Form Submit) */
+.btn-secondary {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 8px;
     width: 100%;
     padding: 14px;
-    border-radius: 10px;
+    border-radius: 8px;
     font-weight: 600;
     font-size: 0.95rem;
     cursor: pointer;
+    transition: all 0.2s ease;
+    background: var(--surface-hover);
+    color: var(--text-main);
+    border: 1px solid var(--border-light);
+}
+.btn-secondary:hover {
+    background: var(--accent-blue);
+    border-color: var(--accent-blue-hover);
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+    transform: translateY(-1px);
+}
+
+/* Developer Profile */
+.dev-profile {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 28px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--border-light);
+}
+.dev-avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    object-fit: cover;
+    /* Убрал черно-белый фильтр, вернул оригинальные цвета фото */
+    border: 2px solid var(--border-light);
+}
+.dev-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+.dev-greeting {
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--text-main);
+}
+.dev-context {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    line-height: 1.4;
+}
+
+/* Support Tiers */
+.support-tiers {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.tier-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--border-light);
+    border-radius: 8px;
+    color: var(--text-main);
     text-decoration: none;
     transition: all 0.2s ease;
 }
 
-.btn-ghost {
-    background: transparent;
-    color: var(--text-main);
-    border: 1px solid var(--border-hover);
+.tier-left {
+    display: flex;
+    align-items: center;
+    gap: 14px;
 }
-.btn-ghost:hover {
+
+.tier-icon-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 6px;
+    background: var(--surface-hover);
+    color: var(--text-subtitle);
+    border: 1px solid var(--border-light);
+    transition: all 0.2s ease;
+}
+
+.tier-name {
+    font-size: 0.95rem;
+    font-weight: 500;
+}
+
+.tier-price {
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--text-subtitle);
+    transition: color 0.2s;
+}
+
+/* Hover & Highlight States */
+.tier-card:hover {
     background: rgba(255, 255, 255, 0.05);
-    border-color: rgba(255, 255, 255, 0.3);
+    border-color: var(--border-strong);
+    transform: translateY(-2px);
 }
 
-.btn-kofi {
-    background: rgba(255, 94, 91, 0.1);
-    color: var(--accent-kofi);
-    border: 1px solid rgba(255, 94, 91, 0.2);
-}
-.btn-kofi:hover {
-    background: rgba(255, 94, 91, 0.15);
-    border-color: rgba(255, 94, 91, 0.4);
+.tier-card:hover .tier-icon-wrap {
+    color: var(--text-main);
+    border-color: var(--text-muted);
 }
 
-/* Подвал */
+.tier-card:hover .tier-price {
+    color: var(--text-main);
+}
+
+/* Highlight Tier (Sponsor) */
+.tier-card-highlight {
+    border-color: rgba(59, 130, 246, 0.3);
+    background: linear-gradient(180deg, rgba(59, 130, 246, 0.05) 0%, transparent 100%);
+}
+.tier-card-highlight .tier-icon-wrap {
+    color: var(--accent-blue);
+    border-color: rgba(59, 130, 246, 0.3);
+}
+.tier-card-highlight .tier-price {
+    color: var(--text-main);
+}
+.tier-card-highlight:hover {
+    border-color: var(--accent-blue);
+    box-shadow: 0 4px 20px rgba(59, 130, 246, 0.15);
+}
+
+/* Footer */
 footer {
     text-align: center;
-    padding-top: 32px;
+    padding-top: 40px;
     border-top: 1px solid var(--border-light);
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
 }
-.copyright {
-    color: var(--text-muted);
-    font-size: 0.9rem;
-    margin-bottom: 8px;
+.footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
 }
 .footer-links a {
-    color: var(--text-subtitle);
+    color: var(--text-muted);
     text-decoration: none;
     font-size: 0.9rem;
-    margin: 0 12px;
+    font-weight: 500;
     transition: color 0.2s;
 }
 .footer-links a:hover {
     color: var(--text-main);
+}
+.copyright {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    opacity: 0.8;
 }
 
 @media (max-width: 768px) {
