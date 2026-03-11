@@ -7,61 +7,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <link rel="icon" type="image/png" sizes="48x48" href="icon48.png">
-    
-    <style>
-        .policy-content {
-            padding: 48px 64px;
-        }
-        .policy-content h1 {
-            font-size: 2.5rem;
-            margin-bottom: 8px;
-            background: linear-gradient(180deg, #ffffff 0%, #93c5fd 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            letter-spacing: -0.02em;
-        }
-        .policy-content h2 {
-            margin-top: 40px;
-            margin-bottom: 16px;
-            color: var(--text-main);
-            border-bottom: 1px solid var(--border-light);
-            padding-bottom: 12px;
-            font-size: 1.4rem;
-        }
-        .policy-content p, .policy-content li {
-            color: var(--text-subtitle);
-            margin-bottom: 16px;
-            font-size: 1.05rem;
-        }
-        .policy-content ul {
-            padding-left: 24px;
-            margin-bottom: 24px;
-        }
-        .policy-content strong {
-            color: #e2e8f0;
-            font-weight: 600;
-        }
-        .policy-content code {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 2px 6px;
-            border-radius: 6px;
-            color: var(--accent-blue);
-            font-family: monospace;
-            border: 1px solid var(--border-light);
-        }
-        
-        @media (max-width: 768px) {
-            .policy-content { padding: 32px 24px; }
-            .policy-content h1 { font-size: 2rem; }
-        }
-    </style>
 </head>
 <body>
 
     <div class="container">
         
-        <nav class="navbar" style="justify-content: space-between;">
-            <a href="index.html" style="display: flex; align-items: center; gap: 12px; text-decoration: none;">
+        <nav class="navbar">
+            <a href="index.html" class="navbar-left">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="32" height="32">
                   <rect x="26" y="16" width="76" height="24" rx="4" fill="#d93025"/>
                   <rect x="22" y="42" width="84" height="24" rx="4" fill="#e37400"/>
@@ -72,7 +24,7 @@
                 <span class="logo-text">GROUPS FREEZER</span>
             </a>
             
-            <a href="index.html" class="btn-ghost" style="width: auto; padding: 10px 20px; font-size: 0.9rem;">
+            <a href="index.html" class="btn-ghost" style="font-size: 0.9rem;">
                 ← Back to Home
             </a>
         </nav>
@@ -116,11 +68,11 @@
         </div>
 
         <footer>
-            <div class="copyright">© 2026 Groups Freezer. Built for productivity.</div>
-                <div class="footer-links">
+            <div class="footer-links">
                 <a href="index.html">Home</a>
                 <a href="index.html#feedback">Contact Support</a>
             </div>
+            <div class="copyright">© 2026 Groups Freezer. Built for productivity.</div>
         </footer>
 
     </div>
