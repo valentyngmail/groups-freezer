@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Project Freezer</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="app-header">
+    <div class="app-branding">
+      <div class="app-title">GROUPS FREEZER</div>
+      <svg class="app-snowflake" viewBox="0 0 512 512" width="16" height="16" xmlns="http://www.w3.org/2000/svg">
+        <polygon fill="currentColor" points="512,238.545 418.496,238.545 454.522,202.518 429.837,177.834 369.128,238.545 286.231,238.545 327.679,166.757 410.614,144.535 401.578,110.814 352.364,124.002 399.116,43.025 368.884,25.571 322.132,106.547 308.944,57.334 275.224,66.37 297.448,149.302 256,221.091 214.554,149.304 236.774,66.368 203.055,57.334 189.868,106.547 143.116,25.571 112.884,43.025 159.636,124.001 110.422,110.815 101.388,144.536 184.32,166.756 225.769,238.545 142.874,238.545 82.16,177.833 57.477,202.517 93.504,238.545 0,238.545 0,273.455 93.504,273.455 57.477,309.483 82.16,334.167 142.874,273.455 225.769,273.455 184.321,345.243 101.384,367.465 110.42,401.186 159.637,387.997 112.884,468.975 143.116,486.429 189.867,405.453 203.055,454.668 236.774,445.632 214.551,362.698 256,290.909 297.448,362.697 275.224,445.633 308.944,454.667 322.131,405.452 368.884,486.429 399.116,468.975 352.364,387.998 401.578,401.186 410.612,367.465 327.68,345.244 286.231,273.455 369.126,273.455 429.839,334.167 454.522,309.483 418.495,273.455 512,273.455"/>
+      </svg>
+    </div>
+    
+    <div class="header-actions">
+      <div class="info-tooltip-wrapper">
+        <svg class="info-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line>
+        </svg>
+        <div class="tooltip-content" data-i18n="tooltipDedupeLogic">
+          Smart logic for closing duplicated tabs. If several identical tabs are in a group, only the leftmost one remains. If tabs are open both inside and outside groups, tabs in groups have priority.
+        </div>
+      </div>
+      <button id="dedupe-btn" class="primary-action-btn" style="background: #1e293b; color: #ffffff; border: 1px solid transparent; padding: 6px 12px; border-radius: 8px; cursor: pointer; font-size: 11px; font-weight: 600; display: flex; align-items: center; gap: 6px;">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="m12 3-1.9 5.8a2 2 0 0 1-1.287 1.288L3 12l5.8 1.9a2 2 0 0 1 1.288 1.287L12 21l1.9-5.8a2 2 0 0 1 1.287-1.288L21 12l-5.8-1.9a2 2 0 0 1-1.288-1.287Z"/>
+        </svg>
+        <span data-i18n="btnDedupe">Clean Duplicates</span>
+      </button>
+    </div>
+  </div>
+
+  <div id="dedupe-result"></div>
+  <button id="undo-dedupe-btn" data-i18n="btnUndoDedupe">↩️ Restore Closed Tabs</button>
+
+  <div class="search-wrapper">
+    <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+    </svg>
+    <input type="text" id="global-search" data-i18n-placeholder="searchGroups" placeholder="Search Groups...">
+  </div>
+
+  <div id="active-section" style="position: relative;">
+    <h3 data-i18n="titleActive">OPEN GROUPS</h3>
+    <div class="active-overlay">
+      <svg class="restore-overlay-icon" width="64" height="49" viewBox="0 0 256 196" xmlns="http://www.w3.org/2000/svg" style="margin-bottom: 8px;">
+        <g fill="none" stroke="currentColor" stroke-width="12" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M16 40 Q128 -10 240 40 L210 150 Q128 120 46 150 Z"/>
+          <path d="M80 155 C95 135 95 120 80 100"/>
+          <path d="M128 165 C145 140 145 120 128 100"/>
+          <path d="M176 155 C191 135 191 120 176 100"/>
+        </g>
+        <g fill="currentColor">
+          <polygon points="80,60 60,100 100,100"/>
+          <polygon points="128,60 108,100 148,100"/>
+          <polygon points="176,60 156,100 196,100"/>
+        </g>
+      </svg>
+      <span style="font-size: 13px; font-weight: 700; letter-spacing: 1px; margin-bottom: 5px;" data-i18n="overlayUnfreeze">UNFREEZE GROUP</span>
+    </div>
+    <div id="active-groups" data-i18n="statusLoading">Loading...</div>
+  </div>
+
+  <div id="frozen-section" style="position: relative;">
+    <div class="section-header-wrap">
+      <h3 data-i18n="titleFrozen">In Cryochamber</h3>
+      <div class="info-tooltip-wrapper">
+        <svg class="info-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line>
+        </svg>
+        <div class="tooltip-content tooltip-left" data-i18n="tooltipCryoInfo">
+          Your frozen tab groups are stored here. Closing unused tabs speeds up your browser and frees up computer memory. You can unfreeze a group at any time to resume your work exactly where you left off by clicking the restore button on the right.
+        </div>
+      </div>
+    </div>
+    <div class="cryo-overlay">
+      <svg class="snowflake-icon" width="36" height="36" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+        <polygon fill="currentColor" points="512,238.545 418.496,238.545 454.522,202.518 429.837,177.834 369.128,238.545 286.231,238.545 327.679,166.757 410.614,144.535 401.578,110.814 352.364,124.002 399.116,43.025 368.884,25.571 322.132,106.547 308.944,57.334 275.224,66.37 297.448,149.302 256,221.091 214.554,149.304 236.774,66.368 203.055,57.334 189.868,106.547 143.116,25.571 112.884,43.025 159.636,124.001 110.422,110.815 101.388,144.536 184.32,166.756 225.769,238.545 142.874,238.545 82.16,177.833 57.477,202.517 93.504,238.545 0,238.545 0,273.455 93.504,273.455 57.477,309.483 82.16,334.167 142.874,273.455 225.769,273.455 184.321,345.243 101.384,367.465 110.42,401.186 159.637,387.997 112.884,468.975 143.116,486.429 189.867,405.453 203.055,454.668 236.774,445.632 214.551,362.698 256,290.909 297.448,362.697 275.224,445.633 308.944,454.667 322.131,405.452 368.884,486.429 399.116,468.975 352.364,387.998 401.578,401.186 410.612,367.465 327.68,345.244 286.231,273.455 369.126,273.455 429.839,334.167 454.522,309.483 418.495,273.455 512,273.455"/>
+      </svg>
+      <span style="font-size: 13px; font-weight: 700; letter-spacing: 1px;" data-i18n="overlayFreeze">FREEZE GROUP</span>
+    </div>
+    <div id="frozen-projects" data-i18n="statusEmpty">Empty</div>
+  </div>
+
+  <div class="footer-links">
+    
+    <div class="settings-panel" id="settings-panel">
+      <div class="settings-header" id="settings-accordion-toggle">
+        <div class="settings-header-left">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#6b7280" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 6px;"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+          <span class="settings-title-text" data-i18n="panelSettingsTitle">Settings</span>
+        </div>
+        <div class="settings-chevron">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#9ca3af" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </div>
+      </div>
+
+      <div class="settings-body">
+        
+        <div class="settings-section">
+          <div class="settings-section-header">
+            <span class="settings-section-title" data-i18n="titleDataBackups">Data & Backups</span>
+            <button id="info-toggle-btn" title="How backups work" data-i18n-title="tooltipHowBackupsWork">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+            </button>
+          </div>
+
+          <div id="backup-info-text" class="backup-info-box">
+            <b data-i18n="btnExport">Export</b>: <span data-i18n="infoExport">Saves your groups to a file.</span><br>
+            <b data-i18n="btnImport">Import</b>: <span data-i18n="infoImport">Loads groups from a file (you can choose to merge or overwrite).</span><br>
+            <b data-i18n="btnRescue">Rescue Data</b>: <span data-i18n="infoRescue">Reverts to the last background auto-save.</span>
+          </div>
+
+          <div class="backup-actions">
+            <button id="export-link" class="secondary-btn">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 6px;"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+              <span data-i18n="btnExport">Export</span>
+            </button>
+            <label for="import-file" id="import-link" class="secondary-btn">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 6px;"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+              <span data-i18n="btnImport">Import</span>
+            </label>
+            <input type="file" id="import-file" accept=".json" style="display: none;">
+          </div>
+          
+          <div class="shadow-backup-panel">
+            <button id="emergency-restore-btn" class="rescue-btn">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 6px;"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="4"></circle><line x1="4.93" y1="4.93" x2="9.17" y2="9.17"></line><line x1="14.83" y1="14.83" x2="19.07" y2="19.07"></line><line x1="14.83" y1="9.17" x2="19.07" y2="4.93"></line><line x1="14.83" y1="9.17" x2="18.36" y2="5.64"></line><line x1="4.93" y1="19.07" x2="9.17" y2="14.83"></line></svg>
+              <span class="rescue-text">Rescue Data</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="settings-section">
+          <div class="settings-section-header">
+            <span class="settings-section-title" data-i18n="langTitle">Interface Language</span>
+          </div>
+          <div class="lang-container-wrapper">
+            <div class="lang-container">
+              <span class="lang-icon">🌐</span>
+              <select class="language-switcher">
+                <option value="en">English</option>
+                <option value="ru">Русский</option>
+                <option value="uk">Українська</option>
+                <option value="de">Deutsch</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    
+    <a href="https://ko-fi.com/K3K21VOTE9" target="_blank" class="bmac-btn" title="Support the project">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M18 8h1a4 4 0 0 1 0 8h-1"></path><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path><line x1="6" y1="1" x2="6" y2="4"></line><line x1="10" y1="1" x2="10" y2="4"></line><line x1="14" y1="1" x2="14" y2="4"></line>
+      </svg>
+      <span data-i18n="btnBuyCoffee">Buy me a coffee</span>
+    </a>
+
+  </div>
+
+  <script src="i18n.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>
